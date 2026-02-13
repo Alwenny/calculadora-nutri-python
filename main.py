@@ -27,19 +27,29 @@ class Nutri:
         else:
             tmb = 447.60 + (9.2 * peso) + (3.1 * altura) - (4.3 * idade)
         
-        return f"sua taxa metabolica basal é {tmb:.1f}"
+        return tmb
     
-    def GET(self):
-        
-    
-nutri = Nutri()
+    def GET(self, tmb, exercicio):
+        tabela_fator = [1.2, 1.375, 1.375, 1.55, 1.55, 1.55, 1.725, 1.725] # 0, 1, 2, 3... dias
 
+        if 0 <= exercicio <= 7:
+            get = tmb * tabela_fator[exercicio]
+            return f"seu gasto energético total diário é {get:.1f}"
+        else:
+            get = tmb * tabela_fator[0]
+            return f"Como não existe um valor negativo ou acima de 7 dias na semana, assumi o resultado como uma pessoa sedentária \n o resultado do seu gasto energético total diário é {get:.1f}"
+
+        
+nutri = Nutri()
+print("vamos começar pedindo algumas informações para os nossos calculos \n")
 peso = float(input("Digite seu peso em kg: "))
 altura = float(input("Digite sua altura em metros: "))
 idade = int(input("Digite a sua idade: "))
 genero = input("Seu Genero (F/M): ")
-
+exercicio = int(input("Quantas vezes por semana você se exercita? "))
 print(nutri.IMC(peso, altura))
 print(nutri.TMB(peso, altura, idade, genero))
+tmb = nutri.TMB(peso, altura, idade, genero)
+print(nutri.GET(tmb, exercicio))
 
 

@@ -39,8 +39,13 @@ class Nutri:
             get = tmb * tabela_fator[0]
             return f"Como não existe um valor negativo ou acima de 7 dias na semana, assumi o resultado como uma pessoa sedentária \n o resultado do seu gasto energético total diário é {get:.1f}"
 
-        
+    def AGUA(self, peso):
+        agua = (peso*35)/1000
+
+        return f"Você precisa de no minimo {agua:.1f}L de água por dia"
+
 nutri = Nutri()
+
 print("vamos começar pedindo algumas informações para os nossos calculos \n")
 peso = float(input("Digite seu peso em kg: "))
 altura = float(input("Digite sua altura em metros: "))
@@ -51,5 +56,6 @@ print(nutri.IMC(peso, altura))
 print(nutri.TMB(peso, altura, idade, genero))
 tmb = nutri.TMB(peso, altura, idade, genero)
 print(nutri.GET(tmb, exercicio))
+print(nutri.AGUA(peso))
 
 

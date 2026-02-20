@@ -1,4 +1,5 @@
 import math
+
 class Nutri:
     def __init__(self):
         pass
@@ -103,15 +104,6 @@ class Nutri:
             e as macros com base em uma dieta PADRÃO, o seu consumo de:\nCarboidratos = {gcarbod:.1f}\nProteina = {gprod:.1f}\nGorduras Totais = {ggordd:.1f} \
                 \n{superavit:.1}Kcal e as macros com base em uma dieta PADRÃO, o seu consumo de:\nCarboidratos = {gcarbos:.1f}\n \
                 Proteina = {gpros:.1f}\nGorduras Totais = {ggords:.1f}"
-
-nutri = Nutri()
-
-print("Vamos começar pedindo algumas informações para os nossos calculos \n")
-peso = float(input("Digite seu peso em kg: "))
-altura = float(input("Digite sua altura em metros: "))
-idade = int(input("Digite a sua idade: "))
-genero = input("Seu Genero (F/M): ")
-dias = int(input("Quantas vezes por semana você se exercita? "))
-tempo = int(input("Geralmente por quantos minitos? "))
+    
 
 

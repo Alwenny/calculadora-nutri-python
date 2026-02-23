@@ -44,5 +44,7 @@ def iniciar_calculadora():
     
     print("\n" + "=" * 45)
 
+    input("Pressione enter para sair!!!")
+
 if __name__ == "__main__":
     iniciar_calculadora()

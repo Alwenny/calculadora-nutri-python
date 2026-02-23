@@ -1,4 +1,3 @@
-# 1. Importa a sua "fábrica" de cálculos do outro arquivo
 from nutri import Nutri
 
 def iniciar_calculadora():

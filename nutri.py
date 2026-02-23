@@ -18,7 +18,10 @@ class Nutri:
         else:
             classificacao = "Obesidade Grave"
         
-        return f"seu IMC é {imc:.1f} e sua classificação é {classificacao}"
+        return {
+            "imc": imc,
+            "classificação": classificacao
+        }
     
     def TMB(self, peso, altura, idade, genero):
 
@@ -44,29 +47,29 @@ class Nutri:
     def AGUA(self, peso):
         agua = (peso*35)/1000
 
-        return f"Você precisa de no minimo {agua:.1f}L de água por dia"
+        return agua
     
-    def MACRONU(self, get):
+ #   def MACRONU(self, get):
 
-        gcarbo = (get*0,5)/4
-        gpro = (get*0,25)/4
-        ggord = (get*0,25)/6
+ #       gcarbo = (get*0,5)/4
+#        gpro = (get*0,25)/4
+#        ggord = (get*0,25)/6
 
-        return f"Com base em uma dieta PADRÃO, o seu consumo de:\nCarboidratos = {gcarbo:.1f}\nProteina = {gpro:.1f}\nGorduras Totais = {ggord:.1f}"
+#      return f"Com base em uma dieta PADRÃO, o seu consumo de:\nCarboidratos = {gcarbo:.1f}\nProteina = {gpro:.1f}\nGorduras Totais = {ggord:.1f}"
     
     def GCE(self, tempo, peso):
         
         exercicios = ["Musculação", "Corrida", "Caminhada"]
         mets = [6, 8.3, 3.5] # musculação, corrida e caminhada
-        concatena = ""
+        resultados_gce = {}
         for i in range(len(mets)):
             met = mets[i]
             exercicio = exercicios[i]
             kcal = met * peso * (tempo/60)
 
-            concatena += f"\n{exercicio}: {kcal:.1} kcal gasta\n"
+            resultados_gce[exercicio] = kcal
 
-        return concatena
+        return resultados_gce
 
     def PORGORD(self, cintura, pescoco, altura, quadril, genero):
 
@@ -84,26 +87,36 @@ class Nutri:
         mgorda = peso * (porcentual/100)
         mmagra = peso - mgorda
 
-        return  f"Seu corpo é composto por {mgorda:.1}% de Massa Gorda e {mmagra:.1}% de Massa Magra"
+        return  {
+            "massa_magra": mmagra,
+            "massa_gorda": mgorda
+        }
     
     def DIETA(self, get):
 
-        superavit = (get*0,15)+get
-        deficit = get-(get*0,15)
+        superavit = (get*0.15)+get
+        deficit = get-(get*0.15)
 
-        gcarbos = (superavit*0,5)/4
-        gpros = (superavit*0,25)/4
-        ggords = (superavit*0,25)/6
+        gcarbos = (superavit*0.5)/4
+        gpros = (superavit*0.25)/4
+        ggords = (superavit*0.25)/6
 
-        gcarbod = (deficit*0,5)/4
-        gprod = (deficit*0,25)/4
-        ggordd = (deficit*0,25)/6
+        gcarbod = (deficit*0.5)/4
+        gprod = (deficit*0.25)/4
+        ggordd = (deficit*0.25)/6
         
 
-        return f"Para uma emagrecer ou ter um superávit calórico de forma saúdavel você deve ingerir respectivamente: \n{deficit:.1}Kcal \
-            e as macros com base em uma dieta PADRÃO, o seu consumo de:\nCarboidratos = {gcarbod:.1f}\nProteina = {gprod:.1f}\nGorduras Totais = {ggordd:.1f} \
-                \n{superavit:.1}Kcal e as macros com base em uma dieta PADRÃO, o seu consumo de:\nCarboidratos = {gcarbos:.1f}\n \
-                Proteina = {gpros:.1f}\nGorduras Totais = {ggords:.1f}"
+        return {
+            "kcal_deficit": deficit,
+            "carbo_deficit": gcarbod,
+            "pro_deficit": gprod,
+            "gord_deficit": ggordd,
+            
+            "kcal_superavit": superavit,
+            "carbo_superavit": gcarbos,
+            "pro_superavit": gpros,
+            "gord_superavit": ggords
+        }
     
 
 

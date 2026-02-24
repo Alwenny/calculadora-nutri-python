@@ -73,13 +73,16 @@ class Nutri:
 
     def PORGORD(self, cintura, pescoco, altura, quadril, genero):
 
-        altura = altura*100
-
+        cintura_in = cintura / 2.54
+        pescoco_in = pescoco / 2.54
+        quadril_in = quadril / 2.54
+        altura_in = (altura * 100) / 2.54
+        
         if genero.upper() == 'M':
-            porcentual = 86.010*math.log10(cintura-pescoco)-70.041*math.log10(altura)+36.76
+            porcentual = 86.010 * math.log10(cintura_in - pescoco_in) - 70.041 * math.log10(altura_in) + 36.76
             
         else:
-            porcentual = 163.205*math.log10(cintura+quadril-pescoco)-97.684*math.log10(altura)-78.387
+            porcentual = 163.205 * math.log10(cintura_in + quadril_in - pescoco_in) - 97.684 * math.log10(altura_in) - 78.387
 
         return porcentual
     
